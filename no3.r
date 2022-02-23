@@ -264,7 +264,8 @@ server <- function(input,output){
             geom_line() +
             geom_point() +
             ggtitle("상위 10개 국가 연도별 행복지수 순위") +
-            ylab("행복지수 순위") +
+            ylab("Happiness Rank") +
+            xlab("Year") +
             transition_reveal(year) +
             theme_minimal() +
             theme(plot.title = element_text(size = 20, hjust = 0.5),
@@ -283,7 +284,7 @@ server <- function(input,output){
         p <- ggplot(df2015_2019, aes(GDP, Happiness.Score, color = Continent, size = 9)) +
             geom_point() +
             theme_bw() +
-            labs(title = 'Year: {frame_time}', x = 'GDP', y = 'Happiness.score') +
+            labs(title = 'Year: {frame_time}', x = 'GDP', y = 'Happiness Score') +
             transition_time(year) +
             ease_aes('linear') +
             theme_minimal() +
