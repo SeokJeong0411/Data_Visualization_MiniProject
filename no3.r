@@ -222,13 +222,13 @@ server <- function(input,output){
     output$plotbox <- renderPlot({
         ggplot(df2015 , aes(x = Continent, y = get(input$sel3))) +
             geom_boxplot(aes(fill=Continent)) + theme_bw() + ylab(input$sel3) +
+            theme_minimal() +
             theme(axis.title = element_text(size = (8)),
                   axis.text.x = element_text(color = "grey20", size = 12, angle = 0),
                   axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
                   axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
                   axis.title.y = element_text(color = "grey20", size = 20, angle = 90),
-                  legend.text = element_text(color = "grey20", size = 12, angle = 0)) +
-            theme_minimal()
+                  legend.text = element_text(color = "grey20", size = 12, angle = 0))
     })
     output$plotkorea <- renderPlot({
         hp_score <- score %>% 
@@ -303,3 +303,4 @@ server <- function(input,output){
 }
 
 shinyApp(ui, server)
+
