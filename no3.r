@@ -12,102 +12,102 @@ ui <- fluidPage(
     
     # 2. 
     navlistPanel(widths = c(3,9),
-        id = "tabset",
-        "행복 지수",
-        tabPanel('내가 정하는 행복 지수',
-                 fluidRow(
-                     column(3,
-                            sliderInput('weight_E',
-                                        'Economy: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_F',
-                                        'Family: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_H',
-                                        'Healthy: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_Fr',
-                                        'Freedom: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_T',
-                                        'Trust: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_G',
-                                        'Generosity: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01),
-                            sliderInput('weight_D',
-                                        'Dystopia Residual: ',
-                                        min = 1,
-                                        max = 5,
-                                        value = 1,
-                                        step = 0.01)),
-                     column(9,
-                            plotOutput('plots999', height = 1000)),)
+                 id = "tabset",
+                 "행복 지수",
+                 tabPanel('내가 정하는 행복 지수',
+                          fluidRow(
+                              column(3,
+                                     sliderInput('weight_E',
+                                                 'Economy: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_F',
+                                                 'Family: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_H',
+                                                 'Healthy: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_Fr',
+                                                 'Freedom: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_T',
+                                                 'Trust: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_G',
+                                                 'Generosity: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01),
+                                     sliderInput('weight_D',
+                                                 'Dystopia Residual: ',
+                                                 min = 1,
+                                                 max = 5,
+                                                 value = 1,
+                                                 step = 0.01)),
+                              column(9,
+                                     plotOutput('plots999', height = 1000)),)
                  ),
-        tabPanel('대륙별 데이터',
-                 selectInput('sel3',
-                             'y column: ',
-                             list('Happiness Score',
-                                  'Economy (GDP per Capita)',
-                                  'Family',
-                                  'Health (Life Expectancy)',
-                                  'Freedom',
-                                  'Trust (Government Corruption)',
-                                  'Generosity',
-                                  'Dystopia Residual')),
-                 plotOutput('plotbox')),
-        tabPanel('한국 .vs. 핀란드',
-                 plotOutput('plotkorea')),
-        "여러 지수",
-        tabPanel('행복에 대한 다양한 변수의 상관관계',
-                 fluidRow(
-                     column(6,
-                            selectInput('sel1',
-                                        'x column: ',
-                                        list('Economy (GDP per Capita)',
-                                             'Family',
-                                             'Health (Life Expectancy)',
-                                             'Freedom',
-                                             'Trust (Government Corruption)',
-                                             'Generosity',
-                                             'Dystopia Residual'))),
-                     column(6,
-                            selectInput('sel2',
-                                        'y column: ',
-                                        list('Economy (GDP per Capita)',
-                                             'Family',
-                                             'Health (Life Expectancy)',
-                                             'Freedom',
-                                             'Trust (Government Corruption)',
-                                             'Generosity',
-                                             'Dystopia Residual')))
-                 ),
-                 plotOutput('plots')),
-        "GIF 움직이는 사진",
-        tabPanel('GDP .vs. 행복도지수',
-                 helpText('로딩이 오래 걸릴 수 있으니 기다려 주세요.'),
-                 imageOutput('plotAni')),
-        tabPanel('상위10개국 연도별 행복도',
-                 helpText('로딩이 오래 걸릴 수 있으니 기다려 주세요.'),
-                 imageOutput('plotAni2'))
+                 tabPanel('대륙별 데이터',
+                          selectInput('sel3',
+                                      'y column: ',
+                                      list('Happiness Score',
+                                           'Economy (GDP per Capita)',
+                                           'Family',
+                                           'Health (Life Expectancy)',
+                                           'Freedom',
+                                           'Trust (Government Corruption)',
+                                           'Generosity',
+                                           'Dystopia Residual')),
+                          plotOutput('plotbox')),
+                 tabPanel('한국 .vs. 핀란드',
+                          plotOutput('plotkorea')),
+                 "여러 지수",
+                 tabPanel('행복에 대한 다양한 변수의 상관관계',
+                          fluidRow(
+                              column(6,
+                                     selectInput('sel1',
+                                                 'x column: ',
+                                                 list('Economy (GDP per Capita)',
+                                                      'Family',
+                                                      'Health (Life Expectancy)',
+                                                      'Freedom',
+                                                      'Trust (Government Corruption)',
+                                                      'Generosity',
+                                                      'Dystopia Residual'))),
+                              column(6,
+                                     selectInput('sel2',
+                                                 'y column: ',
+                                                 list('Economy (GDP per Capita)',
+                                                      'Family',
+                                                      'Health (Life Expectancy)',
+                                                      'Freedom',
+                                                      'Trust (Government Corruption)',
+                                                      'Generosity',
+                                                      'Dystopia Residual')))
+                          ),
+                          plotOutput('plots')),
+                 "GIF 움직이는 사진",
+                 tabPanel('GDP .vs. 행복도지수',
+                          helpText('로딩이 오래 걸릴 수 있으니 기다려 주세요.'),
+                          imageOutput('plotAni')),
+                 tabPanel('상위10개국 연도별 행복도',
+                          helpText('로딩이 오래 걸릴 수 있으니 기다려 주세요.'),
+                          imageOutput('plotAni2'))
     )
 )
 
@@ -227,7 +227,8 @@ server <- function(input,output){
                   axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
                   axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
                   axis.title.y = element_text(color = "grey20", size = 20, angle = 90),
-                  legend.text = element_text(color = "grey20", size = 12, angle = 0))
+                  legend.text = element_text(color = "grey20", size = 12, angle = 0)) +
+            theme_minimal()
     })
     output$plotkorea <- renderPlot({
         hp_score <- score %>% 
@@ -244,13 +245,14 @@ server <- function(input,output){
                  subtitle = "2006 ~ 2019",
                  caption = "World Happiness report") +
             theme_ipsum(grid = "Y") +
-            geom_hline(yintercept = 5.445809501, color = "#668b8b", size = 0.5) +
-            theme(plot.title = element_text(size = 20),
+            geom_hline(linetype='dashed', yintercept = 5.445809501, color = "#668b8b", size = 0.5) +
+            theme(plot.title = element_text(size = 20, hjust = 0.5),
+                  plot.subtitle = element_text(size = 15, hjust = 0.5),
                   axis.text.x = element_text(color = "grey20", size = 12, angle = 0),
                   axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
-                  axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
-                  axis.title.y = element_text(color = "grey20", size = 20, angle = 90))
-        
+                  axis.title.x = element_text(color = "grey20", size = 20, angle = 0, hjust = 0.5),
+                  axis.title.y = element_text(color = "grey20", size = 20, angle = 90, hjust = 0.5))+
+            geom_text(color = 'azure4', aes(2004, 5.445809501, label = "World Average", vjust = 1))
     })
     output$plotAni2 <- renderImage({
         don <- df2015_2019 %>% 
@@ -264,7 +266,8 @@ server <- function(input,output){
             ggtitle("상위 10개 국가 연도별 행복지수 순위") +
             ylab("행복지수 순위") +
             transition_reveal(year) +
-            theme(plot.title = element_text(size = 20),
+            theme_minimal() +
+            theme(plot.title = element_text(size = 20, hjust = 0.5),
                   axis.text.x = element_text(color = "grey20", size = 12, angle = 0),
                   axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
                   axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
@@ -273,31 +276,30 @@ server <- function(input,output){
         anim_save("outfile.gif", animate(p))
         list(src = "outfile.gif",
              contentType = 'image/gif')
-             # width = 400,
-             # height = 300
+        # width = 400,
+        # height = 300
     }, deleteFile = T)
     output$plotAni <- renderImage({
         p <- ggplot(df2015_2019, aes(GDP, Happiness.Score, color = Continent, size = 9)) +
-                geom_point() +
-                theme_bw() +
-                labs(title = 'Year: {frame_time}', x = 'GDP', y = 'Happiness.score') +
-                transition_time(year) +
-                ease_aes('linear') +
-                theme(plot.title = element_text(size = 20),
-                    axis.text.x = element_text(color = "grey20", size = 12, angle = 0),
-                    axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
-                    axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
-                    axis.title.y = element_text(color = "grey20", size = 20, angle = 90),
-                    legend.text = element_text(color = "grey20", size = 12, angle = 0))
+            geom_point() +
+            theme_bw() +
+            labs(title = 'Year: {frame_time}', x = 'GDP', y = 'Happiness.score') +
+            transition_time(year) +
+            ease_aes('linear') +
+            theme_minimal() +
+            theme(plot.title = element_text(size = 20, hjust = 0.5),
+                  axis.text.x = element_text(color = "grey20", size = 12, angle = 0),
+                  axis.text.y = element_text(color = "grey20", size = 12, angle = 0),  
+                  axis.title.x = element_text(color = "grey20", size = 20, angle = 0),
+                  axis.title.y = element_text(color = "grey20", size = 20, angle = 90),
+                  legend.text = element_text(color = "grey20", size = 12, angle = 0))
         anim_save("outfile.gif", animate(p))
         list(src = "outfile.gif",
              contentType = 'image/gif'
              # width = 400,
              # height = 300,
-             )
-        },deleteFile = T,)
+        )
+    },deleteFile = T,)
 }
 
 shinyApp(ui, server)
-
-
