@@ -93,7 +93,12 @@ ui <- pageWithSidebar(
                                       'Trust (Government Corruption)',
                                       'Generosity',
                                       'Dystopia Residual')),
-                     plotOutput('plotbox'))
+                     plotOutput('plotbox')),
+            tabPanel('한국 .vs. 핀란드',
+                     plotOutput('plotkorea')),
+            tabPanel('상위10개국 연도별 행복도',
+                     helpText('로딩이 오래 걸릴 수 있으니 기다려 주세요.'),
+                     imageOutput('plotAni2'))
         )
     )
 )
@@ -101,6 +106,7 @@ ui <- pageWithSidebar(
 # 데이터 불러오기
 df2015 <- fread('2015.csv')
 df2015_2019 = read.csv(file = "2015_2019.csv", header=T)
+score <- read_excel("happiness_score.xlsx")
 
 # 전처리
 df2015_2019$Continent <- NA
@@ -207,6 +213,44 @@ server <- function(input,output){
             geom_boxplot(aes(fill=Continent)) + theme_bw() +
             theme(axis.title = element_text(size = (8)))
     })
+    output$plotkorea <- renderPlot({
+        hp_score <- score %>% 
+            filter(`Country name` %in% c("Finland", "South Korea"))
+        
+        hp_score %>% 
+            ggplot( aes(x=year, y=score, group=`Country name`, color = `Country name`)) +
+            geom_line(size = 1) +
+            scale_color_manual(values = c("#f0e130", "#bf94e4"))+
+            xlim(2005, 2020) +
+            scale_x_binned(n.breaks=18) +
+            labs(x = "Year", y = "Happiness Score",
+                 title = "한국과 핀란드의 행복 점수 비교",
+                 subtitle = "2006 ~ 2019",
+                 caption = "World Happiness report") +
+            theme_ipsum(grid = "Y") +
+            geom_hline(yintercept = 5.445809501, color = "#668b8b", size = 0.5)
+        
+    })
+    output$plotAni2 <- renderImage({
+        don <- df2015_2019 %>% 
+            filter(Country %in% c("Switzerland", "Iceland", "Denmark", "Norway", "Canada",
+                                  "Finland", "Netherlands", "Sweden", "New Zealand",
+                                  "Australia", "Austria"))
+        p <- don %>%
+            ggplot( aes(x=year, y=-Happiness.Rank, group=Country, color=Country)) +
+            geom_line() +
+            geom_point() +
+            # scale_color_viridis(discrete = TRUE) +
+            ggtitle("상위 10개 국가 연도별 행복지수 순위") +
+            theme_ipsum() +
+            ylab("행복지수 순위") +
+            transition_reveal(year)
+        anim_save("outfile.gif", animate(p))
+        list(src = "outfile.gif",
+             contentType = 'image/gif')
+             # width = 400,
+             # height = 300
+    }, deleteFile = T)
     output$plotAni <- renderImage({
         p <- ggplot(df2015_2019, aes(GDP, Happiness.Score, color = Continent, size = 9)) +
                 geom_point() +
@@ -219,8 +263,9 @@ server <- function(input,output){
              contentType = 'image/gif'
              # width = 400,
              # height = 300,
-    )},deleteFile = TRUE,
-)}
+             )
+        },deleteFile = T,)
+}
 
 shinyApp(ui, server)
 
