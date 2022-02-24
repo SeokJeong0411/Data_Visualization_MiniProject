@@ -9,7 +9,7 @@
 - R markdown으로 결과 보고서를 작성하시오.
 
 ### 2. House Prices – Advanced Regression Techniques
-##### 캐글 주소: https://www.kaggle.com/c/house-prices-advancedregression-techniques
+##### 캐글 주소: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
 - EDA와 시각화를 통해 데이터를 이해하시오.
 - 다양한 선형 회귀분석 방법을 적용하시오.
 - 선형 회귀모델을 피팅하시오. (step, 규제화 등)
