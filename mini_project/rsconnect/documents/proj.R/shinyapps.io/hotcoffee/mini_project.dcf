@@ -1,0 +1,13 @@
+name: mini_project
+title: mini_project
+username:
+account: hotcoffee
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5717485
+bundleId: 5611845
+url: https://hotcoffee.shinyapps.io/mini_project/
+when: 1645660418.82577
+lastSyncTime: 1645660418.82577
+asMultiple: FALSE
+asStatic: FALSE
